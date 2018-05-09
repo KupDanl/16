@@ -2,8 +2,9 @@ var request = require("request");
 var fs = require("fs");
 var http = require("http");
 var clc = require("cli-color");
+var currentDate = new Date();
 
-var Converter = request("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5 ", function(err, res, body) {  
+var converter = request("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5 ", function(err, res, body) {  
 	var courses = "";
 	var obj = JSON.parse(body);
 	var data = fs.readFileSync("courses.html", "utf8");
@@ -31,4 +32,5 @@ var Converter = request("https://api.privatbank.ua/p24api/pubinfo?json&exchange&
 	});
 });	
 
-module.exports = Converter;
+module.exports = converter;
+module.exports = currentDate;
